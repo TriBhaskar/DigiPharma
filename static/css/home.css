@@ -1,0 +1,159 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background:rgb(227, 237, 213);
+	font-weight:400px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto', sans-serif;
+  }
+  
+  #Lower_header{
+    background-color: #10847e;
+  }
+  #lower_header{
+    background-color: #10847e;
+  }
+  #up_header label a:hover{
+    background: #3e6607ea;
+    border-radius: 25px;
+  }
+
+  #logo{
+	text-align: center;
+	/* padding-bottom:25px; */
+	/* background-color: #b03e3e; */
+}
+#logo_div{
+	text-align: center;
+	/* background-color: #747474; */
+}
+
+/* carousel */
+#rows{
+  margin-top: 150px;
+  padding: 30px;
+}
+
+
+/* home */
+/* #home_menu .active{
+  background: #999;
+
+} */
+#home_menu label:hover{
+  background: #8ad129;
+  border-radius: 22px;
+}
+
+ #category_img{
+  height: 0;
+  width: 0;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+} 
+.item{
+  text-align: center;
+  cursor: pointer;
+  padding: 25px;
+  margin: 3px;
+  display: flex;
+  flex-direction: column;
+  border: rgb(198, 195, 195) solid;
+  border-radius: 10px;
+  box-sizing: border-box;
+
+}
+.Category_items{
+  padding-inline-start: 50px;
+}
+a{
+  text-decoration: none;
+}
+#shop{
+  margin-top: 200px;
+}
+.products div{
+  border: #dce2e2 solid;
+  border-radius: 10px;
+}
+ /* all drop down */
+
+ .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+input{
+  text-align: center;
+}
+/* pos */
+/* cart.html */
+#cart,#checkout,#address{
+    margin-top: 200px;
+  }
+
+.poss {
+  position: relative;
+}
+
+.poss .pos {
+  background:transparent;
+  padding-left: 0;
+}
+
+.poss .pos li a {
+  background:#8ad129;
+  color: #FFFFFF;
+  padding: 3px 7px;
+}
+.pos{padding:8px 15px;
+  margin-bottom:20px;
+  list-style:none;
+  background-color:#f5f5f5;
+  border-radius:4px}
+.pos>li{
+  display:inline-block;
+}
+.pos>li+li:before{
+  padding:0 5px;
+  color:#ccc;}
+.pos>.active{
+  color:#999;
+}
+
+.box-element{
+  box-shadow:#999;
+  border-radius: 4px;
+  background: #FFFFFF;
+  padding: 10px;
+}
+
+.form-control{
+  background-color: #82bfc54a;
+}
