@@ -29,9 +29,11 @@
                                     <span>{{item.product.descrip}}</span>
                                 </a>
                                 <h4 style="background: #8ad129;">₹ {{item.product.price}}</h4>
-                                <div id="quantity" class="align-center">
-                                    <input type="number" name="quantity" value="{{item.quantity}}">
-    
+                                <div class="quantity d-flex" class="align-center">
+                                    <h4>{{item.quantity}}</h4>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label data-product="{{item.product.id}}" data-action="add" class="chg-quantity btn btn-outline-success update-cart"><i  class="fa-solid fa-caret-up fa-2x "></i></label>
+                                    <label data-product="{{item.product.id}}" data-action="remove" class="chg-quantity btn btn-outline-success update-cart"><i class="fa-solid fa-caret-down fa-2x "></i></label>
                                 </div>
                                 <div id="totalitem">
                                         <h4>₹{{item.get_total}}</h4>

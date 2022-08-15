@@ -30,6 +30,26 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script>
+            var user = '{{request.user}}'
+
+            function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+        </script>
     <!-- end -->
     <!-- basic css -->
     {% load static %}
@@ -112,7 +132,7 @@
                             </label>
                             <label class="align-self-baseline px-md-5">
                                 <div class="dropdown">
-                                    <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                                    <a href="#" class="nav-item nav-link">Shop Detail</a>
                                     <div class="dropdown-content">
                                         <a href="{% url 'cart' %}">Shopping Cart</a>
 

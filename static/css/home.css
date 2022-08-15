@@ -157,3 +157,22 @@ input{
 .form-control{
   background-color: #82bfc54a;
 }
+
+.quantity{
+  display: inline-block;
+  font-weight: 700;
+  padding-right: 10px;
+}
+
+.chg-quantity{
+  width: 45px;
+  cursor: pointer;
+  display: block;
+  margin-top: 5px;
+  transition: .1s;
+  background-color: #949c8a;
+}
+
+.chg-quantity:hover{
+  opacity: .6;
+}
