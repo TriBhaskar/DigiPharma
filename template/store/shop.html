@@ -5,366 +5,220 @@
 
 <!-- body part -->
 <div id="shop" class="container-fluid bg-light text-dark">
-    <!-- <div class="container" style="padding: 0%; margin: 0%;"> -->
-    <div class="row">
-      <div class="col-lg-3 d-flex justify-content-center">
-        <!-- all category -->
-        <div class="Category container text-center">
-          <h2> Category </h2>
-          <div class="panel panel-default list-group">
-            <div class="panel-body"><a href="#Health" class="list-group-item list-group-item-action">
-                Health
-              </a></div>
-            <hr>
-            <div class="panel-body"><a href="#Skin" class="list-group-item list-group-item-action">
-                Skin Care
-              </a></div>
-            <hr>
-            <div class="panel-body"><a href="#Baby" class="list-group-item list-group-item-action">
-                Baby Care
-              </a></div>
-            <hr>
-            <div class="panel-body"><a href="#H&F" class="list-group-item list-group-item-action">
-                Health and Fitness
-              </a></div>
-            <hr>
-            <div class="panel-body"><a href="#Diabets" class="list-group-item list-group-item-action">
-                Diabets
-              </a></div>
-            <hr>
-            <div class="panel-body"><a href="#Eldely" class="list-group-item list-group-item-action">
-                Eldely Care
-              </a></div>
-            <hr>
-          </div>
+  <!-- <div class="container" style="padding: 0%; margin: 0%;"> -->
+  <div class="row">
+    <div class="col-lg-3 d-flex justify-content-center">
+      <!-- all category -->
+      <div class="Category container text-center">
+        <h2> Category </h2>
+        <div class="panel panel-default list-group">
+          <div class="panel-body"><a href="#Health" class="list-group-item list-group-item-action">
+              Health
+            </a></div>
+          <hr>
+          <div class="panel-body"><a href="#Skin" class="list-group-item list-group-item-action">
+              Skin Care
+            </a></div>
+          <hr>
+          <div class="panel-body"><a href="#Baby" class="list-group-item list-group-item-action">
+              Baby Care
+            </a></div>
+          <hr>
+          <div class="panel-body"><a href="#H&F" class="list-group-item list-group-item-action">
+              Health and Fitness
+            </a></div>
+          <hr>
+          <div class="panel-body"><a href="#Diabets" class="list-group-item list-group-item-action">
+              Diabets
+            </a></div>
+          <hr>
+          <div class="panel-body"><a href="#Eldely" class="list-group-item list-group-item-action">
+              Eldely Care
+            </a></div>
+          <hr>
         </div>
-        <!-- all category end -->
       </div>
-      <div class="col-lg-9 justify-content-center">
-        <!-- all products -->
-        <div class="all_products text-center">
-          <h2> New Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
+      <!-- all category end -->
+    </div>
+    <div class="col-lg-9 justify-content-center">
+      <!-- all products -->
+      <div class="all_products text-center">
+        <h2> New Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
-        <!-- new product end -->
-        <hr>
-        <div id="Health" class="all_products text-center">
-          <h2> Health Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- health product end -->
-        <hr>
-        <div id="Skin" class="all_products text-center">
-          <h2> Skin Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- skin care product end -->
-        <hr>
-        <div id="Baby" class="all_products text-center">
-          <h2> Baby Care Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Baby care Product end -->
-        <hr>
-        <div id="H&F" class="all_products text-center">
-          <h2> Health and Fitness Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- health and fitness product end -->
-        <hr>
-        <div id="Diabets" class="all_products text-center">
-          <h2> Diabets Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Diabets product end -->
-        <hr>
-        <div id="Eldely" class="all_products text-center">
-          <h2> Elderly Products</h2>
-          <div class="container" style="padding: 0%; margin: 0%;">
-            <div class="row">
-              <div class="col-4 mt-3 single_product border shadow ">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocine</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-              <div class="col-4 mt-3 single_product border shadow">
-                <img src="{% static '/img/crocin.jpg' %}" alt="crocine">
-                <a href="product_details">
-                  <h5>Crocinfgdfge</h5>
-                </a>
-                <h4 style="background: #8ad129;">₹140</h4>
-                <div class="choose">
-                  <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
-                    cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- all products end-->
       </div>
+      <!-- new product end -->
+      <hr>
+      <div id="Health" class="all_products text-center">
+        <h2> Home Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            {% if product.category.name == "HOME" %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- health product end -->
+      <hr>
+      <div id="Skin" class="all_products text-center">
+        <h2> Skin Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            {% if product.category.name == "SKIN CARE" %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- skin care product end -->
+      <hr>
+      <div id="Baby" class="all_products text-center">
+        <h2> Baby Care Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            {% if product.category.name == "BABY CARE" %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- Baby care Product end -->
+      <hr>
+      <div id="H&F" class="all_products text-center">
+        <h2> Health and Fitness Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            {% if product.category.name == "HEALTH & FITNESS" %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      <!-- health and fitness product end -->
+      <hr>
+      <div id="Diabets" class="all_products text-center">
+        <h2> Diabetes Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            {% if product.category.name == "DIABETES" %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- Diabets product end -->
+      <hr>
+      <div id="Eldely" class="all_products text-center">
+        <h2> Ayurveda Products</h2>
+        <div class="container" style="padding: 0%; margin: 0%;">
+          <div class="row">
+            {% for product in products %}
+            {% if product.category.name == "AYURVEDA" %}
+            <div class="col-4 mt-3 single_product border shadow ">
+              <img src="{{product.image.url}}" alt="crocine">
+              <a href="product_details">
+                <h5>{{product.name}}</h5>
+              </a>
+              <h4 style="background: #8ad129;">₹ {{product.price}}</h4>
+              <div class="choose">
+                <a href=""><i class="fa fa-plus-square">&nbsp;</i>Add to wishlist</a>
+                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart">&nbsp;</i>Add to
+                  cart</a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            
+          </div>
+        </div>
+      </div>
+      <!-- all products end-->
     </div>
   </div>
+</div>
+</div>
 
 {% endblock %}

@@ -16,60 +16,30 @@
             <h2>Order Summary</h2>
             <div class="container-fluid d-flex" style="padding: 0%; margin: 0%;">
                 <div class="col-lg-8 m-2">
+                    {% for item in items %}
                     <div class="cart_prod border shadow" >
                         <div class="d-flex">
                             <div id="prod_img">
-                                <img src="./img/crocin.jpg" alt="crocine">
+                                <img src="{{item.product.imageURL}}" alt="crocine">
 
                             </div>
                             <div id="prod_discription pt-3">
                                 <a href="product_details">
-                                    <h5>Crocine</h5>
-                                    <span>this prioasjkndsadknaskdn</span>
+                                    <h5>{{item.product.name}}</h5>
+                                    <span>{{item.product.descrip}}</span>
                                 </a>
-                                <h4 style="background: #8ad129;">₹140</h4>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="cart_quantity_button">
-                                <button class="btn btn-outline-success" style="border-radius: 50%;"> + </button>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1"
-                                    autocomplete="off" size="2">
-                                <button class="btn btn-outline-success" style="border-radius: 50%;"> - </button>
-                            </div>
-                            <div class="mx-5">
-                                <a href=""><button class="btn btn-outline-success"><i
-                                            class="fa fa-light fa-trash lead">&nbsp;&nbsp;</i>Remove</button></a>
+                                <h4 style="background: #8ad129;">₹ {{item.product.price}}</h4>
+                                <div id="quantity" class="align-center">
+                                    <input type="number" name="quantity" value="{{item.quantity}}">
+    
+                                </div>
+                                <div id="totalitem">
+                                        <h4>₹{{item.get_total}}</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="cart_prod border shadow" >
-                        <div class="d-flex">
-                            <div id="prod_img">
-                                <img src="./img/crocin.jpg" alt="crocine">
-
-                            </div>
-                            <div id="prod_discription pt-3">
-                                <a href="product_details">
-                                    <h5>Crocine</h5>
-                                    <span>this prioasjkndsadknaskdn</span>
-                                </a>
-                                <h4 style="background: #8ad129;">₹140</h4>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="cart_quantity_button">
-                                <button class="btn btn-outline-success" style="border-radius: 50%;"> + </button>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1"
-                                    autocomplete="off" size="2">
-                                <button class="btn btn-outline-success" style="border-radius: 50%;"> - </button>
-                            </div>
-                            <div class="mx-5">
-                                <a href=""><button class="btn btn-outline-success"><i
-                                            class="fa fa-light fa-trash lead">&nbsp;&nbsp;</i>Remove</button></a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="col-lg-4 m-2 ">
                     <div id="order_total"
@@ -77,14 +47,14 @@
                         <span>Price Details</span>
                         <div class="d-flex justify-content-between">
                             <div class="text-start px-xl-5">
-                                <span>MRP Price</span><br>
-                                <span>Discount</span><br>
-                                <span>Total</span> <br>
+                                <span>Items:</span><br>
+                                <span>Discount:</span><br>
+                                <span>Total:</span> <br>
                             </div>
                             <div class="text-end px-xl-5">
-                                <span class="">₹1000</span><br>
-                                <span class="">-₹500</span><br>
-                                <span class="">₹500</span> <br>
+                                <span class="">{{order.get_cart_items}}</span><br>
+                                <span class="">-₹0</span><br>
+                                <span class="">₹{{order.get_cart_total}}</span> <br>
                             </div>
                         </div>
                         <a href="{% url 'checkout' %}"><div class="text-center d-grid">

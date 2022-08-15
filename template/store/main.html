@@ -34,6 +34,7 @@
     <!-- basic css -->
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <script type="text/javascript" src="{% static '/js/home.js' %}"></script>
 </head>
 
 <body>
@@ -127,10 +128,10 @@
                     <div class="col-lg-3" style="text-align: end;">
                         <label class="nav-item px-4"><a href="{% url 'cart' %}"><i
                                     class="fa-regular fa-heart text-light"></i><span class="badge bg-danger">
-                                    2</span></a></label>
+                                        {{order.get_cart_items}}</span></a></label>
                         <label class="nav-item px-4"><a href="{% url 'cart' %}"><i
                                     class="fas fa-shopping-cart text-light"></i><span class="badge bg-danger">
-                                    2</span></a></label>
+                                    {{order.get_cart_items}}</span></a></label>
                     </div>
                 </nav>
 
@@ -254,6 +255,8 @@
         </div>
     </footer>
 
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static '/js/cart.js' %}"></script>
 </body>
 
 </html>
