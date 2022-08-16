@@ -22,7 +22,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
     descrip=models.TextField()
     image=models.ImageField(null=True, blank=True)
-    price=models.FloatField()
+    price=models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class Product(models.Model):
 
 class Order(models.Model): #cart
     customer= models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
-    product= models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+    # product= models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     date_orderd=models.DateTimeField(auto_now_add=True)
     complete= models.BooleanField(default=False, null=True, blank=False)
     transaction_id=models.CharField(max_length=200, null=True)
