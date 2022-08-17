@@ -50,6 +50,7 @@
 		}
 		var csrftoken = getToken('csrftoken')
         </script>
+        
     <!-- end -->
     <!-- basic css -->
     {% load static %}
@@ -92,11 +93,20 @@
                         </label>
                     </div>
                     <div class="navbar-nav col-lg-5 d-flex flex-row-reverse ">
+                        {% if request.user.is_authenticated %}
                         <label class="nav-item px-4">
-                            <a class="nav-link text-light" href="login.html">LOGIN</a>
+                            <span class="nav-link text-danger">Hello, {{request.user}}</span>
+                            <!-- <a class="nav-link text-light" href="{% url 'login' %}">LOGIN</a> -->
                         </label>
                         <label class="nav-item px-4">
-                            <a class="nav-link text-light" href="login.html">REGISTER</a>
+                             <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                        <label class="nav-item px-4">
+                            <a class="nav-link text-light" href="{% url 'login' %}">LOGIN</a>
+                        </label>
+                        <label class="nav-item px-4">
+                            <a class="nav-link text-light" href="{% url 'register' %}">REGISTER</a>
+                        {% endif %}
                         </label>
                     </div>
                 </nav>
@@ -114,9 +124,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div id="search_bar">
-                            <form class="d-flex" style="position:relative;">
-                                <input class="form-control me-1" type="text" placeholder="Search for any item">
-                                <button class="btn text-light" type="button"
+                            <form method="GET" action="{% url 'shop' %}" class="d-flex" style="position:relative;">
+                                <input name="q" class="form-control me-1" type="text" placeholder="Search for any item">
+                                <button class="btn text-light" type="submit"
                                     style="background: #8ad129;position: absolute;right:0;"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
@@ -132,11 +142,12 @@
                             </label>
                             <label class="align-self-baseline px-md-5">
                                 <div class="dropdown">
-                                    <a href="#" class="nav-item nav-link">Shop Detail</a>
+                                    <a href="{% url 'shop_detail' %}" class="nav-item nav-link">Shop Detail</a>
                                     <div class="dropdown-content">
                                         <a href="{% url 'cart' %}">Shopping Cart</a>
-
+                                        {% if order.get_cart_items %}
                                         <a href="{% url 'checkout' %}">Checkout</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </label>
@@ -168,7 +179,7 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer" class="container-fluid bg-light text-dark mt-5 pt-5">
+    <footer id="footer" class="container-fluid bg-light text-dark mt-5">
         <!-- footer_upper -->
         <div id="footer_upper">
             <!-- <div class="container" > -->
@@ -182,8 +193,7 @@
                             </div>
                         </a>
                         <p>
-                            Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no
-                            sit erat lorem et magna ipsum dolore amet erat.
+                            The doctor sees all the weakness of mankind; the lawyer all the wickedness, the theologian all the stupidity
                         </p>
                         <p class="mb-2">
                             <i class="fa fa-envelope text-primary mr-3"></i>panthribhaskar@gmail.com
@@ -194,7 +204,7 @@
                     </div>
                     <div class="col-lg-8 col-md-12">
                         <div class="row">
-                            <div class="col-md-4 mb-5">
+                            <div class="col-md-6 mb-5">
                                 <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                                 <div class="d-flex flex-column justify-content-start">
                                     <a class="text-dark mb-2" href="index.html"><i
@@ -211,24 +221,7 @@
                                             class="fa fa-angle-right mr-2"></i>Contact Us</a>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-5">
-                                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                                <div class="d-flex flex-column justify-content-start">
-                                    <a class="text-dark mb-2" href="index.html"><i
-                                            class="fa fa-angle-right mr-2"></i>Home</a>
-                                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our
-                                        Shop</a>
-                                    <a class="text-dark mb-2" href="detail.html"><i
-                                            class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                                    <a class="text-dark mb-2" href="cart.html"><i
-                                            class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                                    <a class="text-dark mb-2" href="checkout.html"><i
-                                            class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                    <a class="text-dark" href="contact.html"><i
-                                            class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
+                            <div class="col-md-6 mb-5">
                                 <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
                                 <form action="">
                                     <div class="form-group">
@@ -253,24 +246,23 @@
         <!-- footer_lower -->
         <div id="footer_lower">
             <div class="container">
-                <div class="row">
-                    <div class="border-top border-light mx-xl-5 py-4">
+                <div class="row align-item-center">
+                    <!-- <div class="border-top border-light mx-xl-5 py-4"> -->
                         <div class="col-md-6 px-xl-0">
                             <p class="mb-md-0 text-center text-md-left text-dark">
                                 &copy;
-                                <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights
+                                <a class="text-dark font-weight-semi-bold" href="#">Digi-Pharma</a>. All Rights
                                 Reserved. Designed by
-                                <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML
-                                    Codex</a><br />
-                                Distributed By
-                                <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                                <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">BHASKAR
+                                    </a><br />
+                                
                             </p>
                         </div>
                         <div class="col-md-6 px-xl-0 text-center text-md-right">
                             <img class="img-fluid" src="{% static 'img/payments.png' %}" alt="" />
                         </div>
                     </div>
-                </div>
+            </div>
             </div>
         </div>
     </footer>

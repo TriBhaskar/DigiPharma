@@ -59,10 +59,17 @@
                                 <span class="">₹{{order.get_cart_total}}</span> <br>
                             </div>
                         </div>
+                        {% if order.get_cart_items %}
                         <a href="{% url 'checkout' %}"><div class="text-center d-grid">
                              <button type="button"  class="btn btn-outline-success btn-block">Place the order</button>
                             </div>
                         </a>
+                        {% else %}
+                        <a href="{% url 'shop' %}"><div class="text-center d-grid">
+                            <button type="button"  class="btn btn-outline-success btn-block">Cannot Proccess empty cart</button>
+                           </div>
+                       </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

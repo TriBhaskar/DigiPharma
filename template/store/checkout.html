@@ -131,16 +131,18 @@
         
         if(shipping != 'False'){
             shippingInfo.address = form.address.value
-            shippingInfo.city = form.address.value
-            shippingInfo.state = form.address.value
-            shippingInfo.zipcode = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.state = form.state.value
+            shippingInfo.zipcode = form.zipcode.value
         }
         if(user == 'AnonymousUser'){
             shippingInfo.name = form.name.value
             shippingInfo.email = form.email.value
             
         }
-
+        console.log('Shipping Info:', shippingInfo)
+        console.log('User Info:', userFormData)
+        
         var url = '/process_order/'
         fetch(url,{
             method :'POST',
