@@ -87,19 +87,29 @@ def shop(request):
         order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
         cartItems = order['get_cart_items']
 
-    context={'products' : products, 'category':category, 'items':items, 'order':order, 'cartItems':cartItems, 'category_count':category_count }
+    context={'products' : products, 'category':category, 'items':items, 'order':order, 'cartItems':cartItems}
     return render(request, 'store/shop.html', context)
 
 @login_required(login_url='login')
 def shoppingDetail(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        shipdetail = ShippingAddress.objects.all()
+        shipdetail = ShippingAddress.objects.filter(customer = customer)
+        # print("this is shipping ",ShippingAddress)
+        if not shipdetail:
+            return redirect('home')
         order, created = Order.objects.get_or_create(customer = customer, complete=False)
+        # print("Order is ",order)
         items = order.orderitem_set.all()
-        prod = OrderItem.objects.all()
-    context ={'items':items, 'prod':prod, 'order':order, 'customer':customer, 'shipdetail':shipdetail}
+        orderafter =Order.objects.filter(customer = customer, complete=True)
+        x=orderafter[len(orderafter)-1]
+        shipitem = x.orderitem_set.all()
+        print("shiipp item :",shipitem)
+        # prod = OrderItem.objects.all()
+    context ={'items':items,'order':order, 'customer':customer, 'shipdetail':shipdetail[len(shipdetail)-1],'shipitem':shipitem,'x':x}
     return render(request, 'store/shopping_detail.html', context)
+
+# from django.contrib.auth import get_user_model user = get_user_model() user.objects.all()
 
 
 def cart(request):

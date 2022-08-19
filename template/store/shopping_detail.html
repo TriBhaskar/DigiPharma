@@ -134,7 +134,7 @@
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
             <span class="pull-right hidden-print">
-            <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
+            <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a> -->
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
             </span>
             Digi-Pharma
@@ -166,7 +166,7 @@
                
                <div class="date text-inverse m-t-5">{{shipdetail.date_added}}</div>
                <div class="invoice-detail">
-                  {{order.transaction_id}}<br>
+                  {{x.transaction_id}}<br>
                   All Product
                </div>
             </div>
@@ -186,33 +186,17 @@
                      </tr>
                   </thead>
                   <tbody>
+                     {% for item in shipitem %}
                      <tr>
                         <td>
                            <span class="text-inverse">  </span><br>
-                           <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sagittis arcu.</small>
+                           <small>{{item.product.name}}</small>
                         </td>
-                        <td class="text-center">$50.00</td>
-                        <td class="text-center">50</td>
-                        <td class="text-right">$2,500.00</td>
+                        <td class="text-center">₹{{item.product.price}}</td>
+                        <td class="text-center">{{item.quantity}}</td>
+                        <td class="text-right">₹{{item.get_total}}</td>
                      </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Branding</span><br>
-                           <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sagittis arcu.</small>
-                        </td>
-                        <td class="text-center">$50.00</td>
-                        <td class="text-center">40</td>
-                        <td class="text-right">$2,000.00</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Redesign Service</span><br>
-                           <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sagittis arcu.</small>
-                        </td>
-                        <td class="text-center">$50.00</td>
-                        <td class="text-center">50</td>
-                        <td class="text-right">$2,500.00</td>
-                     </tr>
+                     {% endfor %}
                   </tbody>
                </table>
             </div>
@@ -223,19 +207,19 @@
                   <div class="invoice-price-row">
                      <div class="sub-price">
                         <small>SUBTOTAL</small>
-                        <span class="text-inverse">$4,500.00</span>
+                        <span class="text-inverse">₹{{x.get_cart_total}}</span>
                      </div>
                      <div class="sub-price">
                         <i class="fa fa-plus text-muted"></i>
                      </div>
                      <div class="sub-price">
-                        <small>PAYPAL FEE (5.4%)</small>
-                        <span class="text-inverse">$108.00</span>
+                        <small>Discount (0%)</small>
+                        <span class="text-inverse">0.00</span>
                      </div>
                   </div>
                </div>
                <div class="invoice-price-right">
-                  <small>TOTAL</small> <span class="f-w-600">$4508.00</span>
+                  <small>TOTAL</small> <span class="f-w-600">₹{{x.get_cart_total}}</span>
                </div>
             </div>
             <!-- end invoice-price -->

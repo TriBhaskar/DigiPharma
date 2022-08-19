@@ -61,7 +61,7 @@
 <body>
 
     <!-- Header -->
-    <header id="header" class="text-light fixed-top">
+    <header id="header" class="text-light fixed-top d-print-none">
         <!-- Header top -->
         <div id="up_header" style="background:#8ad129;">
             <!-- <div class="container"> -->
@@ -93,6 +93,12 @@
                         </label>
                     </div>
                     <div class="navbar-nav col-lg-5 d-flex flex-row-reverse ">
+                        {% if request.user.is_superuser%}
+                        <label class="nav-item px-4">
+                            <span class="nav-link text-danger">Admin</span>
+                            <!-- <a class="nav-link text-light" href="{% url 'login' %}">LOGIN</a> -->
+                        </label>
+                        {% endif %}
                         {% if request.user.is_authenticated %}
                         <label class="nav-item px-4">
                             <span class="nav-link text-danger">Hello, {{request.user}}</span>
