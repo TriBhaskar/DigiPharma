@@ -192,3 +192,23 @@ def processOrder(request):
     else:
         print('User is not logged in....')
     return JsonResponse('Payment Complete!', safe=False)
+    
+
+def contact(request):
+    if request.method == "POST":
+        name=request.POST.get("name")
+        email=request.POST.get("email")
+        sub=request.POST.get("subject")
+        msg=request.POST.get("message")
+        Contact.objects.create(name=name, email=email, sub=sub, msg=msg)
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer = customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+
+    context={'items':items, 'order':order}
+    return render(request, 'store/contact.html',context)
