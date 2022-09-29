@@ -153,7 +153,7 @@ def updateItem(request):
 
     orderItem, created =OrderItem.objects.get_or_create(order=order, product=product)
 
-    if action =='add':
+    if action =='add' and orderItem.quantity<5:
         orderItem.quantity = (orderItem.quantity + 1)
     elif action =='remove':
         orderItem.quantity = (orderItem.quantity - 1)
@@ -173,6 +173,7 @@ def processOrder(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer = customer, complete=False)
+        items = order.orderitem_set.all()
         total =float(data['form']['total'])
         order.transaction_id = transaction_id
 
@@ -191,6 +192,10 @@ def processOrder(request):
             )
     else:
         print('User is not logged in....')
+    for item in items:
+        item.update_prod()
+        print("item name",item.product.name)
+        print("item quantity",item.quantity)
     return JsonResponse('Payment Complete!', safe=False)
     
 
